@@ -1,5 +1,6 @@
-dataclasses
-enforce-pep8
-setuptools
-wheel
-twine
+dataclasses==0.6.0
+enforce-pep8==0.0.5
+setuptools==46.1.3
+wheel==0.34.2
+twine==3.1.1
+COVID19Py==0.3.0

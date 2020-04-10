@@ -10,6 +10,7 @@
 [![Checked with mypy](http://www.mypy-lang.org/static/mypy_badge.svg)](http://mypy-lang.org/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE.md)
 [![EO principles respected here](https://www.elegantobjects.org/badge.svg)](https://www.elegantobjects.org)
+[![CodeFactor](https://www.codefactor.io/repository/github/vyahello/covid-telebot/badge)](https://www.codefactor.io/repository/github/vyahello/covid-telebot)
 
 # Covid telebot
 
@@ -19,6 +20,7 @@
 
 - python 3.6 | 3.7 | 3.8
 - [pyTelegramBotAPI](https://github.com/eternnoir/pyTelegramBotAPI)
+- [COVID19Py](https://github.com/Kamaropoulos/COVID19Py)
 - [travis](https://travis-ci.org/) CI
 - code analysis
   - [pytest](https://pypi.org/project/pytest/)
