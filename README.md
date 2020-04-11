@@ -15,6 +15,8 @@
 # Covid telebot
 
 > A telegram bot aims to track latest COVID19 virus statistics across the world.
+>
+> Telegram bot is called `CovidTrackerBot`, please search for it in the telegram app.
 
 ## Tools
 
@@ -34,9 +36,20 @@
 
 ### Quick start
 
+Search for `CovidTrackerBot` telegram bot and start using it.
+
 ### Source code
 
-### Local debug
+> Before actual usage please export telegram bot api key into environment variables:
+
+```bash
+export COVID_KEY="your-secret-key" 
+```
+
+```bash
+git clone git@github.com:vyahello/covid-telebot.git
+python -m covid
+```
 
 **[⬆ back to top](#covid-telebot)**
 
