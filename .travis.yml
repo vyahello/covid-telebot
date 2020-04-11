@@ -6,6 +6,8 @@ python:
 addons:
   apt:
     update: true
+before_install:
+  - export COVID_KEY=sekret
 install:
   - pip install pip -U
   - pip install -r requirements-dev.txt -U

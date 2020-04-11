@@ -9,6 +9,11 @@ class Buttons(AbstractStyle):
     """Abstract interface for telegram buttons."""
 
     @abstractmethod
+    def __len__(self) -> int:
+        """Returns amount of buttons."""
+        pass
+
+    @abstractmethod
     def __getitem__(self, pick: int) -> KeyboardButton:
         """Returns button by it's index.
 
@@ -55,6 +60,9 @@ class PickButtons(Buttons):
             KeyboardButton(text="Spain"),
             KeyboardButton(text="USA"),
         )
+
+    def __len__(self) -> int:
+        return len(self._buttons)
 
     def __getitem__(self, pick: int) -> KeyboardButton:
         return self._buttons[pick]

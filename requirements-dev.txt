@@ -22,3 +22,4 @@ flake8-unused-arguments==0.0.3
 flake8-variables-names==0.0.3
 coverage==5.0.4
 coveralls==2.0.0
+pyTelegramBotApi==3.6.7
