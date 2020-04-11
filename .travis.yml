@@ -10,6 +10,7 @@ before_install:
   - export COVID_KEY=sekret
 install:
   - pip install pip -U
+  - pip install -r requirements.txt -U
   - pip install -r requirements-dev.txt -U
 script:
     - ./analyse-source-code.sh
