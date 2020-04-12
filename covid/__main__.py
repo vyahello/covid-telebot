@@ -1,16 +1,13 @@
 """Represents executable entrypoint for `covid` telegram bot."""
-from COVID19Py import COVID19
-from telebot import TeleBot
 from telebot.types import Message
-from covid import COVID_KEY
+from covid.bot import CovidBot
 from covid.navigation import GramMarkup, Markup, PickButtons
 
-api: COVID19 = COVID19()
-bot: TeleBot = TeleBot(COVID_KEY)
+__bot: CovidBot = CovidBot()
 
 
-@bot.message_handler(commands=("start",))  # type: ignore
-def start(message: Message) -> None:
+@__bot.message_handler(commands="start")  # type: ignore
+def intro(message: Message) -> None:
     """Starts `covid telebot` application.
 
     Args:
@@ -18,13 +15,27 @@ def start(message: Message) -> None:
     """
     markup: Markup = GramMarkup()
     markup.add_buttons(PickButtons())
-    send_message: str = f"<b>Hello {message.from_user.first_name}!</b>\nPlease enter country:"
-    bot.send_message(message.chat.id, send_message, parse_mode="html", reply_markup=markup.reply())
+    __bot.send_message(
+        message.chat.id,
+        text=f"<b>Hello {message.from_user.first_name}!</b>\nPlease enter country:",
+        parse_mode="html",
+        reply_markup=markup.reply(),
+    )
+
+
+@__bot.message_handler(content_types="text")  # type: ignore
+def by_country(message: Message) -> None:
+    """Returns covid19 statistics by input country.
+
+    Args:
+        message (Message): input message
+    """
+    message.text = ""
 
 
 def main() -> None:
     """Runs `covid` telegram bot."""
-    bot.polling(none_stop=True)
+    __bot.polling(none_stop=True)
 
 
 if __name__ == "__main__":
