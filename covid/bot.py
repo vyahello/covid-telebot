@@ -11,7 +11,7 @@ class CovidBot(AbstractStyle, TeleBot):
     __TOKEN: str = os.environ["COVID_KEY"]
 
     def __init__(
-        self, threaded: bool = True, skip_pending: bool = False, num_threads: int = 10
+        self, threaded: bool = False, skip_pending: bool = False, num_threads: int = 10
     ) -> None:
         super().__init__(self.__TOKEN, threaded, skip_pending, num_threads)
 

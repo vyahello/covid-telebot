@@ -6,6 +6,7 @@ from covid.navigation import GramMarkup, Markup, PickButtons
 from covid.tracker import CovidTracker, Location
 
 __bot: CovidBot = CovidBot()
+__bot.set_webhook(url="http://corona-telebot.herokuapp.com")
 bot: CovidBot = __bot
 
 
