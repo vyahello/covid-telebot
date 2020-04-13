@@ -22,7 +22,7 @@ def markup() -> Markup:
 
 
 def test_count_buttons(buttons: Buttons) -> None:
-    assert len(buttons) == 4
+    assert len(buttons) == 6
 
 
 def test_first_button(buttons: Buttons) -> None:
@@ -30,7 +30,7 @@ def test_first_button(buttons: Buttons) -> None:
 
 
 def test_last_button(buttons: Buttons) -> None:
-    assert buttons[-1].text == "USA"
+    assert buttons[-1].text == "China"
 
 
 def test_keyboard_buttons(keyboard: Keyboard) -> None:
@@ -44,5 +44,5 @@ def test_markup_reply(markup: Markup, buttons: Buttons) -> None:
 def test_markup_add_buttons(markup: Markup, buttons: Buttons) -> None:
     markup.add_buttons(buttons)
     assert (
-        len(tuple(button for row_button in markup.reply().keyboard for button in row_button)) == 4
+        len(tuple(button for row_button in markup.reply().keyboard for button in row_button)) == 6
     )

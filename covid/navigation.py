@@ -58,7 +58,9 @@ class PickButtons(Buttons):
             KeyboardButton(text="World"),
             KeyboardButton(text="Ukraine"),
             KeyboardButton(text="Spain"),
+            KeyboardButton(text="Italy"),
             KeyboardButton(text="USA"),
+            KeyboardButton(text="China"),
         )
 
     def __len__(self) -> int:
