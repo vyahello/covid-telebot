@@ -34,6 +34,8 @@
 
 ## Usage
 
+![Usage](howto.gif)
+
 ### Quick start
 
 Search for `CovidTrackerBot` telegram bot and start using it.
