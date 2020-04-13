@@ -1,13 +1,27 @@
 """Represents executable entrypoint for `covid` telegram bot."""
+from typing import IO, Tuple
+from flask import Flask, request
+from markdown import markdown
 from punish.style import AbstractStyle
-from telebot.types import Message
+from telebot.types import Message, Update
+from covid import COVID_TOKEN, HOST_IP, HOST_PORT, WEB_HOOK_URL
 from covid.bot import CovidBot
 from covid.navigation import GramMarkup, Markup, PickButtons
 from covid.tracker import CovidTracker, Location
 
-__bot: CovidBot = CovidBot()
-__bot.set_webhook(url="http://corona-telebot.herokuapp.com")
-bot: CovidBot = __bot
+__bot: CovidBot = CovidBot(COVID_TOKEN)
+__server: Flask = Flask(__name__)
+
+
+def __as_markdown(content: str) -> str:
+    """Returns file content as markdown."""
+    with open(content) as readme:  # type: IO[str]
+        return markdown(readme.read())  # type: ignore
+
+
+def __readme() -> str:
+    """Returns readme documentation as markdown file content."""
+    return __as_markdown(content="README.md")
 
 
 class __Output(AbstractStyle):
@@ -19,7 +33,7 @@ class __Output(AbstractStyle):
 
     @property
     def message(self) -> str:
-        """Returns input message."""
+        """Returns input _message."""
         return self._message
 
     def as_intro(self) -> str:
@@ -91,9 +105,24 @@ def by_country(message: Message) -> Message:
     return __bot.send_html_message(message.chat.id, text=output.as_globe(location))
 
 
+@__server.route(f"/{COVID_TOKEN}", methods=("POST",))
+def _message() -> Tuple[str, int]:
+    """Returns decoded message."""
+    __bot.process_new_updates([Update.de_json(request.stream.read().decode("utf-8"))])
+    return __readme(), 200
+
+
+@__server.route("/")
+def _web_hook() -> Tuple[str, int]:
+    """Sets application web hook for external deployment (e.g `heroku`)."""
+    __bot.remove_webhook()
+    __bot.set_webhook(WEB_HOOK_URL)
+    return __readme(), 200
+
+
 def main() -> None:
     """Runs `covid` telegram bot."""
-    __bot.polling(none_stop=True)
+    __server.run(HOST_IP, HOST_PORT, debug=False)
 
 
 if __name__ == "__main__":

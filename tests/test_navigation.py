@@ -1,24 +1,8 @@
-import pytest
 from telebot.types import ReplyKeyboardMarkup
-from covid.navigation import Buttons, GramKeyboard, GramMarkup, Keyboard, Markup, PickButtons
+from covid.navigation import Buttons, Keyboard, Markup
 from tests.markers import unit
 
 pytestmark = unit
-
-
-@pytest.fixture(scope="module")
-def buttons() -> Buttons:
-    yield PickButtons()
-
-
-@pytest.fixture(scope="module")
-def keyboard(buttons: Buttons) -> Keyboard:
-    yield GramKeyboard(buttons)
-
-
-@pytest.fixture(scope="module")
-def markup() -> Markup:
-    yield GramMarkup()
 
 
 def test_count_buttons(buttons: Buttons) -> None:
