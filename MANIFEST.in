@@ -1,2 +1,0 @@
-include *.png *.md *.ini *.in *.yml *.toml *.cfg
-recursive-include covid .* *.png *.css *.gif *.jpg *.pt *.txt *.js *.html *.xml *.md *.ini *.in *.yml *.toml *.sh
