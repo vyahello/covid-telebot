@@ -21,6 +21,7 @@
 ## Tools
 
 - python 3.6 | 3.7 | 3.8
+- [flask](https://flask.palletsprojects.com/)
 - [pyTelegramBotAPI](https://github.com/eternnoir/pyTelegramBotAPI)
 - [COVID19Py](https://github.com/Kamaropoulos/COVID19Py)
 - [travis](https://travis-ci.org/) CI
