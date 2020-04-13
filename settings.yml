@@ -1,0 +1,14 @@
+# Telegram bot from_path
+bot:
+  # A telegram bot API token provided by BotFather
+  token: ""
+  # An url to deployed application e.g `https://server.herokuapp.com`
+  url: https://corona-telebot.herokuapp.com
+  # Server side from_path
+server:
+  # Binding ip address e.g `127.0.0.1`
+  host: 0.0.0.0
+  # Binding port e.g `9999`
+  port: 5000
+  # Set either to development or production environment
+  debug: false

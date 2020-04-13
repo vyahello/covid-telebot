@@ -13,5 +13,5 @@ class CovidBot(AbstractStyle, TeleBot):
         super().__init__(token, threaded, skip_pending, num_threads)
 
     def send_html_message(self, chat_id: int, text: str, **kwargs) -> Message:
-        """Sends _message to bot in `html` format."""
+        """Sends __message to bot in `html` format."""
         return self.send_message(chat_id, text, parse_mode="html", **kwargs)

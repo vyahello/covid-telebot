@@ -4,19 +4,20 @@ from flask import Flask, request
 from markdown import markdown
 from punish.style import AbstractStyle
 from telebot.types import Message, Update
-from covid import COVID_TOKEN, HOST_IP, HOST_PORT, WEB_HOOK_URL
 from covid.bot import CovidBot
 from covid.navigation import GramMarkup, Markup, PickButtons
+from covid.settings import Settings, from_path
 from covid.tracker import CovidTracker, Location
 
-__bot: CovidBot = CovidBot(COVID_TOKEN)
+__settings: Settings = from_path()
+__bot: CovidBot = CovidBot(__settings.bot().token())
 __server: Flask = Flask(__name__)
 
 
 def __as_markdown(content: str) -> str:
     """Returns file content as markdown."""
     with open(content) as readme:  # type: IO[str]
-        return markdown(readme.read())  # type: ignore
+        return markdown(readme.read())
 
 
 def __readme() -> str:
@@ -33,7 +34,7 @@ class __Output(AbstractStyle):
 
     @property
     def message(self) -> str:
-        """Returns input _message."""
+        """Returns input __message."""
         return self._message
 
     def as_intro(self) -> str:
@@ -76,7 +77,7 @@ class __Output(AbstractStyle):
         )
 
 
-@__bot.message_handler(commands=("start",))  # type: ignore
+@__bot.message_handler(commands=("start",))
 def intro(message: Message) -> None:
     """Starts `covid telebot` application.
 
@@ -90,7 +91,7 @@ def intro(message: Message) -> None:
     )
 
 
-@__bot.message_handler(content_types=("text",))  # type: ignore
+@__bot.message_handler(content_types=("text",))
 def by_country(message: Message) -> Message:
     """Returns covid19 statistics by input country.
 
@@ -105,24 +106,26 @@ def by_country(message: Message) -> Message:
     return __bot.send_html_message(message.chat.id, text=output.as_globe(location))
 
 
-@__server.route(f"/{COVID_TOKEN}", methods=("POST",))
-def _message() -> Tuple[str, int]:
+@__server.route(f"/{__settings.bot().token()}", methods=("POST",))
+def __message() -> Tuple[str, int]:
     """Returns decoded message."""
     __bot.process_new_updates([Update.de_json(request.stream.read().decode("utf-8"))])
     return __readme(), 200
 
 
 @__server.route("/")
-def _web_hook() -> Tuple[str, int]:
+def __web_hook() -> Tuple[str, int]:
     """Sets application web hook for external deployment (e.g `heroku`)."""
     __bot.remove_webhook()
-    __bot.set_webhook(WEB_HOOK_URL)
+    __bot.set_webhook(__settings.bot().web_hook())
     return __readme(), 200
 
 
 def main() -> None:
     """Runs `covid` telegram bot."""
-    __server.run(HOST_IP, HOST_PORT, debug=False)
+    __server.run(
+        __settings.server().host(), __settings.server().port(), __settings.server().debug()
+    )
 
 
 if __name__ == "__main__":

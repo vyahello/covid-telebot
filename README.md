@@ -40,15 +40,11 @@ Search for `CovidTrackerBot` telegram bot and start using it.
 
 ### Source code
 
-> Before actual usage please export telegram bot api key into environment variables:
-
-```bash
-export COVID_KEY="your-secret-key" 
-```
+> Before usage please configure [settings.yaml](settings.yml) file:
 
 ```bash
 git clone git@github.com:vyahello/covid-telebot.git
-python -m covid
+python -m covid --setup setings.yml
 ```
 
 **[⬆ back to top](#covid-telebot)**

@@ -51,10 +51,10 @@ class CovidTracker(Tracker):
         self._tracker: COVID19 = COVID19(self.__URL, self.__SOURCE)
 
     def latest(self) -> AnyDict:
-        return self._tracker.getLatest()  # type: ignore
+        return self._tracker.getLatest()
 
     def location_by_country(self, code: str) -> AnyListDict:
-        return self._tracker.getLocationByCountryCode(code)  # type: ignore
+        return self._tracker.getLocationByCountryCode(code)
 
 
 class _Country(Target):
@@ -65,7 +65,7 @@ class _Country(Target):
 
     def population(self) -> int:
         """Returns country population."""
-        return self._country["country_population"]  # type: ignore
+        return self._country["country_population"]
 
     def datetime(self) -> str:
         """Returns stats datetime."""
@@ -73,13 +73,13 @@ class _Country(Target):
         return f"{date[0]} {date[1].split('.')[0]}"
 
     def confirmed(self) -> int:
-        return self._country["latest"]["confirmed"]  # type: ignore
+        return self._country["latest"]["confirmed"]
 
     def deaths(self) -> int:
-        return self._country["latest"]["deaths"]  # type: ignore
+        return self._country["latest"]["deaths"]
 
     def recovered(self) -> int:
-        return self._country["latest"]["recovered"]  # type: ignore
+        return self._country["latest"]["recovered"]
 
 
 class _Globe(Target):
