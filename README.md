@@ -1,5 +1,3 @@
-![Screenshot](icon.png)
-
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
 [![Build Status](https://travis-ci.org/vyahello/covid-telebot.svg?branch=master)](https://travis-ci.org/vyahello/covid-telebot)
 [![Coverage Status](https://coveralls.io/repos/github/vyahello/covid-telebot/badge.svg?branch=master)](https://coveralls.io/github/vyahello/covid-telebot?branch=master)
@@ -20,11 +18,11 @@
 
 ## Tools
 
-- python 3.6 | 3.7 | 3.8
-- [flask](https://flask.palletsprojects.com/)
-- [pyTelegramBotAPI](https://github.com/eternnoir/pyTelegramBotAPI)
-- [COVID19Py](https://github.com/Kamaropoulos/COVID19Py)
-- [travis](https://travis-ci.org/) CI
+- back-end
+  - python 3.6 | 3.7 | 3.8
+  - [flask](https://flask.palletsprojects.com/) web framework
+  - [pyTelegramBotAPI](https://github.com/eternnoir/pyTelegramBotAPI) library
+  - [COVID19Py](https://github.com/Kamaropoulos/COVID19Py) package
 - code analysis
   - [pytest](https://pypi.org/project/pytest/)
   - [black](https://black.readthedocs.io/en/stable/)
@@ -32,10 +30,9 @@
   - [pylint](https://www.pylint.org/)
   - [flake8](http://flake8.pycqa.org/en/latest/)
   - [pydocstyle](https://github.com/PyCQA/pydocstyle)
+  - [travis](https://travis-ci.org/) CI
 
 ## Usage
-
-![Usage](howto.gif)
 
 ### Quick start
 
