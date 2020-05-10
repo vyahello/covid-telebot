@@ -3,7 +3,7 @@
 PACKAGE="covid"
 
 
---entry-point-box() {
+entry-point-box() {
 :<<DOC
     Provides pretty-printer check box
 DOC
@@ -23,7 +23,7 @@ check-black() {
 :<<DOC
     Runs "black" code analyser
 DOC
-    --entry-point-box "black" && ( black --check ${PACKAGE} )
+    entry-point-box "black" && ( black --check ${PACKAGE} )
 }
 
 
@@ -31,7 +31,7 @@ check-flake() {
 :<<DOC
     Runs "flake8" code analysers
 DOC
-    --entry-point-box "flake" && ( flake8 ./ )
+    entry-point-box "flake" && ( flake8 ./ )
 }
 
 
@@ -39,7 +39,7 @@ check-pylint() {
 :<<DOC
     Runs "pylint" code analyser
 DOC
-    --entry-point-box "pylint" && ( find ${PACKAGE} -type f -name "*.py" | xargs pylint )
+    entry-point-box "pylint" && ( find ${PACKAGE} -type f -name "*.py" | xargs pylint )
 }
 
 
@@ -47,7 +47,7 @@ check-mypy() {
 :<<DOC
     Runs "mypy" code analyser
 DOC
-    --entry-point-box "mypy" && ( mypy --package "${PACKAGE}" )
+    entry-point-box "mypy" && ( mypy --package "${PACKAGE}" )
 }
 
 
@@ -55,7 +55,7 @@ check-docstrings() {
 :<<DOC
      Runs "pydocstyle" static documentation code style formatter
 DOC
-    --entry-point-box "pydocstyle" && ( pydocstyle --explain --count ${PACKAGE} )
+    entry-point-box "pydocstyle" && ( pydocstyle --explain --count ${PACKAGE} )
 }
 
 
@@ -63,7 +63,7 @@ check-unittests() {
 :<<DOC
     Runs unittests using "pytest" framework
 DOC
-    --entry-point-box "unitests" && pytest
+    entry-point-box "unitests" && pytest
 }
 
 
@@ -78,8 +78,9 @@ DOC
       check-pylint && \
       check-flake && \
       check-docstrings && \
-      check-unittests
+      check-unittests 
     )
+    return 0
 }
 
 main
