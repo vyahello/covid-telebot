@@ -19,7 +19,7 @@
 ## Tools
 
 - back-end
-  - python 3.6 | 3.7 | 3.8
+  - python 3.6, 3.7, 3.8
   - [flask](https://flask.palletsprojects.com/) web framework
   - [pyTelegramBotAPI](https://github.com/eternnoir/pyTelegramBotAPI) library
   - [COVID19Py](https://github.com/Kamaropoulos/COVID19Py) package
