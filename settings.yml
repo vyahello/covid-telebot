@@ -1,7 +1,7 @@
 # Telegram bot settings
 bot:
   # A telegram bot API token provided by BotFather
-  token: "1212345176:AAEOzfcKj7DmNwgYkaTR2ZuGqyDT1Wh9lXk"
+  token: ""
   # An url to deployed application e.g `https://server.herokuapp.com`
   url: https://corona-telebot.herokuapp.com
   # Server side settings
