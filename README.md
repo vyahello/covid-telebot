@@ -33,6 +33,7 @@
   - [travis](https://travis-ci.org/) CI
 
 ## Usage
+![Usage](howto.gif)
 
 ### Quick start
 
